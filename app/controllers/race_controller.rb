@@ -1,0 +1,4 @@
+class RaceController < ApplicationController
+
+	
+end
