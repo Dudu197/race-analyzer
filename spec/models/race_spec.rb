@@ -22,6 +22,28 @@ RSpec.describe Race, type: :model do
   	end
   end
 
+  describe "test valid_lap?" do
+  	it "should return a value for valid strings" do
+  		text1 = "23:49:08.277      038 – F.MASSA                           1		1:02.852                        44,275"
+  		text2 = "20:16:03.277      001 – DUDU                           1        0:50.157                        35.178"
+  		text3 = "20:17:40.075    005 – LUAN      3        0:48.135      40,487"
+
+  		expect(@race.valid_lap?(text1)).not_to be nil
+  		expect(@race.valid_lap?(text2)).not_to be nil
+  		expect(@race.valid_lap?(text3)).not_to be nil
+  	end
+
+  	it "should return nil for invalidvalid strings" do
+  		text1 = "23:4908.277      038 – F.MASSA                           1		1:02.852                        44,275"
+  		text2 = "20:16:03.277      001 – DUDU                           1        0:50.157                        "
+  		text3 = "20:17:40.075    005 – LU AN      3        0:48.135      40,487"
+
+  		expect(@race.valid_lap?(text1)).to be nil
+  		expect(@race.valid_lap?(text2)).to be nil
+  		expect(@race.valid_lap?(text3)).to be nil
+  	end
+  end
+
   describe "test analyze" do
   	before do
   		@race.analyze @example_laps

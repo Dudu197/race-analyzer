@@ -6,6 +6,7 @@ class Race
 		self.results = []
 		data = trim_laps(data)
 		data.each do |current_lap|
+			next unless valid_lap?(current_lap)
 			current_lap = current_lap.split(" ")
 			lap = Lap.new
 			lap.time = Time.strptime(current_lap[0], "%H:%M:%S.%N")
@@ -47,6 +48,10 @@ class Race
 
 			self.results << result
 		end
+	end
+
+	def valid_lap?(lap)
+		lap.match(/[0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2}\.[0-9]{1,3}[ \t]{1,}[0-9]{1,}[ \t]{1,}.[ \t]{1,}[^ ]{1,}[ \t]{1,}[0-4][ \t]{1,}[0-9]{1,2}:[0-9]{1,2}\.[0-9]{1,3}[ \t]{1,}[0-9,\.]{1,}/)
 	end
 
 	def trim_laps(laps)
