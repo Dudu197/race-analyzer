@@ -4,6 +4,7 @@ class Race
 	def analyze(data)
 		self.laps = []
 		self.results = []
+		data = trim_laps(data)
 		data.each do |current_lap|
 			current_lap = current_lap.split(" ")
 			lap = Lap.new
@@ -40,13 +41,18 @@ class Race
 			best_lap = race_laps.min_by(&:lap_time)
 			result.best_lap = best_lap
 
-			result.ref_time = seconds_to_string((race_laps.sum(&:lap_time_in_seconds)- first_place_time))
+			result.ref_time = seconds_to_string(race_laps.sum(&:lap_time_in_seconds)- first_place_time)
 
 			result.average_speed = ((race_laps.map { |e| e.average_speed }.sum) / race_laps.count).round(2)
 
 			self.results << result
 		end
+	end
 
+	def trim_laps(laps)
+		max_laps = 4
+		lap_index = 4
+		laps.select { |e| e.split(" ")[lap_index].to_i <= max_laps }
 	end
 
 	def seconds_to_string(seconds)

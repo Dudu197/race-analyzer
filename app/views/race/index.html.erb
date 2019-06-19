@@ -1,7 +1,7 @@
 <h1 class='text-center'>Race Analyzer</h1>
 <h2 class='text-center'>Select a file to be analyzed</h2>
 <%= simple_form_for :race, url: '/' do |f| %>
-	<%= f.input :file, as: :file, input_html: {accept: '.txt'} %>
+	<%= f.input :file, as: :file, label: 'File (.txt only)', input_html: {accept: '.txt'} %>
 	<%= f.submit :Analyze, class: 'btn btn-success' %>
 <% end -%>
 <p>Or: <%= link_to 'download example file', root_url+'example.txt', { target: '_blank' } %></p>

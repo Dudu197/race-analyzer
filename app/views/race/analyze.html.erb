@@ -28,4 +28,7 @@
 		<% end -%>
 	</tbody>
 </table>
+<p>
+	<b>Best lap: #<%= @race.best_lap.lap_number %></b> lap performed by <b><%= @race.best_lap.pilot_name %></b> (<%= @race.best_lap.pilot_id %>) with time <b><%= @race.best_lap.lap_time_to_string %></b>
+</p>
 <%= link_to 'Analyze other race', '/', class: 'btn btn-link' %>
