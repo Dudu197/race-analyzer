@@ -1,3 +1,31 @@
-<% @race.results.each do |result| %>
-	<h1>#<%= result.position %> - <%= result.pilot_name %></h1>
-<% end -%>
+<table class="table">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Pilot</th>
+			<th>Code</th>
+			<th>Laps</th>
+			<th>Total time</th>
+			<th>Best Lap</th>
+			<th>Best Lap time</th>
+			<th>Average Speed</th>
+			<th>Time difference</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @race.results.each do |result| %>
+			<tr>
+				<td><%= result.position %></td>
+				<td><%= result.pilot_name %></td>
+				<td><%= result.pilot_id %></td>
+				<td><%= result.laps_number %></td>
+				<td><%= result.race_time %></td>
+				<td><%= result.best_lap.lap_number %></td>
+				<td><%= result.best_lap.lap_time_to_string %></td>
+				<td><%= result.average_speed %></td>
+				<td><%= result.ref_time %></td>
+			</tr>
+		<% end -%>
+	</tbody>
+</table>
+<%= link_to 'Analyze other race', '/', class: 'btn btn-link' %>
