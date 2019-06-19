@@ -1,5 +1,5 @@
 class Race
-	attr_accessor :file, :laps, :results, :best_lap
+	attr_accessor :laps, :results, :best_lap
 
 	def analyze(data)
 		self.laps = []
