@@ -1,0 +1,9 @@
+As maiores instruções estão no arquivo README.md
+
+O Sistema está online em https://race-analyzer.herokuapp.com/
+
+Há alguns arquivos de exemplo na pasta /public:
+ - example.txt
+ - example1.txt
+ - example2.txt
+ - example3.txt
